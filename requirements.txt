@@ -1,6 +1,6 @@
-apache-airflow==2.9.0
-pyspark==3.5.1
-pandas==2.2.2
-pandas-gbq==0.22.0
-requests==2.31.0
-python-dotenv==1.0.1
+requests
+pandas
+pyspark
+google-cloud-bigquery
+pandas-gbq
+python-dotenv
