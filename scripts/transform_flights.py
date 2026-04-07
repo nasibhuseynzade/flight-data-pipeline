@@ -1,7 +1,6 @@
 import os
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, explode, regexp_replace, when
-from pyspark.sql.functions import col, when, rand, floor, regexp_replace
+from pyspark.sql.functions import col, when, rand, floor, regexp_replace, current_timestamp, explode
 import pandas_gbq
 from dotenv import load_dotenv
 
@@ -50,8 +49,9 @@ def transform_and_load():
 ).filter(col("airline").isNotNull())
 
     print("\n--- GOLD TABLE PREVIEW ---")
+    
+    gold_df = gold_df.withColumn("processed_at", current_timestamp())
     gold_df.show(5, truncate=False)
-
     # 3. LOAD: Ingest Gold data to Google BigQuery
     print("Ingesting Gold data to Google BigQuery (Incremental Load)...")
 
