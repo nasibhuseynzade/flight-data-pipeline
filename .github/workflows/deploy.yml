@@ -22,3 +22,10 @@ jobs:
             --source . \
             --region europe-west4 \
             --set-env-vars GCP_PROJECT_ID="${{ secrets.GCP_PROJECT_ID }}",AVIATION_API_KEY="${{ secrets.AVIATION_API_KEY }}"
+
+          - name: Deploy to Cloud Run Jobs
+        run: |
+          gcloud run jobs deploy aviation-etl-job \
+            --image europe-west4-docker.pkg.dev/aviation-data-project/cloud-run-source-deploy/aviation-etl-job \
+            --region europe-west4 \
+            --set-env-vars AVIATION_API_KEY=${{ secrets.AVIATION_API_KEY }},GCP_PROJECT_ID=aviation-data-project
