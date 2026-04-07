@@ -14,3 +14,11 @@ __pycache__/
 
 # Google Cloud Keys
 *key*.json
+*-key.json
+!GCP_SA_KEY.json
+
+.vscode/
+.idea/
+.DS_Store
+.ipynb
+

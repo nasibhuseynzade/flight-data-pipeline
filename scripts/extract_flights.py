@@ -8,7 +8,7 @@ load_dotenv()
 
 # Configuration
 API_KEY = os.getenv("AVIATION_API_KEY")
-BASE_URL = "http://api.aviationstack.com/v1/flights"
+BASE_URL = "http://api.aviationstack.com/v1/flights?access_key=KEY&dep_iata=FRA"
 OUTPUT_FILE = "flights_bronze.json"
 
 def extract_data():
@@ -18,7 +18,7 @@ def extract_data():
 
     params = {
         'access_key': API_KEY,
-        'limit': 100  # Fetching 100 records for pipeline processing
+        'limit': 100  
     }
 
     print("Fetching raw data from AviationStack API...")
